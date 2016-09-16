@@ -6,7 +6,7 @@ import markdown.extensions.tables
 import datetime
 import random
 #Yeah, it's hard-coded. Sorry, I guess.
-data_dir = '/home/keith/Code/Python/my-site/data/'
+data_dir = '/home/keith/Code/Python/keithstellyesdotcom/data/'
 md_extensions = ['markdown.extensions.tables']
 #A major catch-all function that is useful for simple writing of files.
 #If it's a markdown file, compile it to HTML then return that raw HTML
@@ -39,7 +39,7 @@ def set_title_etc(s):
       <title>{0}</title>
       <meta charset="utf-8"></meta>
       <meta name="viewport" content="width=device-width, initial-scale=1"></meta>
-      <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"></link>
+      <link rel="stylesheet" href="style.css"></link>
     </head>'''
 
     s = titl.format(s,str(datetime.datetime.now()),str(random.randint(1,100)))
