@@ -12,7 +12,8 @@ def log(s):
 
 @app.route("/")
 def hello():
-    return Response(open('pages/home.html'))
+    #return Response(open('pages/home.html'))
+    return "For once in my life, it'd be great if this would be easy."
 
 @app.route("/style.css")
 def style_css():
