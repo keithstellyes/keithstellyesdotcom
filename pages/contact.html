@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<!--
+2016-09-16 15:49:08.717254
+Your lucky number for today: 26
+-->
+<head>
+      <title>Contact - Keith Stellyes</title>
+      <meta charset="utf-8"></meta>
+      <meta name="viewport" content="width=device-width, initial-scale=1"></meta>
+      <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"></link>
+    </head>
+	<body>
+    <nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="home">Keith Stellyes' Website</a>
+    </div>
+    <ul class="nav navbar-nav">
+      <li><a href="apps">Web Apps</a></li>
+      <li><a href="projects">Projects</a></li>
+      <li><a href="contact">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+    <div class="well well-lg" style="margin:50px;">
+    <!--
+<form action="send_contact.html" method="post">
+  First name:<br>
+  <input type="text" name="name" value="Mickey"><br>
+  Last name:<br>
+  <input type="text" name="body" value="Mickey"><br>
+  Last name:<br>
+  <input type="text" name="email" value="Mouse"><br><br>
+  <input type="submit" value="Submit">
+</form>
+-->
+<form action="send_contact" method="post" role="form">
+  <div class="form-group">
+    <label for="email">Email address:</label>
+    <input type="email" class="form-control" id="email" name="email">
+  </div>
+  <div class="form-group">
+    <label for="name">Name:</label>
+    <input type="text" class="form-control" id="name" name="name">
+  </div>
+  <div class="form-group">
+    <label for="body">Message:</label>
+    <textarea class="form-control" rows="5" id="body" name="body"></textarea>
+    </div>
+  <button type="submit" class="btn btn-default">Submit</button>
+</form>
+    </div>
+	</body>
+</html>
