@@ -18,6 +18,5 @@ pyxdg==0.25
 requests==2.4.3
 simplejson==3.8.2
 six==1.8.0
-unattended-upgrades==0.1
 urllib3==1.9.1
 wheel==0.24.0
