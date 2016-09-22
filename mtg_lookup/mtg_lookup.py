@@ -23,7 +23,7 @@ def do_search(s,results_page_string):
     qb.make_query()
     arr = []
     for el in qb.cursor_results:
-        s = el['NAME'] + '</br>' + el['TYPE'] + '\n' + el['CARD_TEXT'] + '</br>'
+        s = el['NAME'] + '</br>' + el['TYPE'] + '</br>' + el['CARD_TEXT'] + '</br>'
         arr.append(s)
     qb.reset_vars()
     return results_page_string.format('</br>'.join(arr))
