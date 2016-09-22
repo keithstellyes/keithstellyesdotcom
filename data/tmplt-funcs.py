@@ -39,7 +39,7 @@ def set_title_etc(s):
       <title>{0}</title>
       <meta charset="utf-8"></meta>
       <meta name="viewport" content="width=device-width, initial-scale=1"></meta>
-      <link rel="stylesheet" href="fast-everglades-82549.herokuapp.com/style.css"></link>
+      <link rel="stylesheet" href="https://fast-everglades-82549.herokuapp.com/style.css"></link>
     </head>'''
 
     s = titl.format(s,str(datetime.datetime.now()),str(random.randint(1,100)))
