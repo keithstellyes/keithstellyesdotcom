@@ -67,6 +67,10 @@ def send():
     return Response(open('pages/send_contact.html'))
     #return Response(s,mimetype="text/html")
 
+@app.route("/tutorials/mips")
+def tutorialspage_mips():
+    return Response(open("pages/mips-tutorial.html"))
+
 if __name__ == "__main__":
     import os
     port = os.environ.get("PORT")

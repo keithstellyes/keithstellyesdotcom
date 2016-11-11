@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <!--
-2016-09-23 10:41:58.540654
-Your lucky number for today: 34
+2016-11-11 14:23:50.367083
+Your lucky number for today: 83
 -->
 <head>
       <title>Contact - Keith Stellyes</title>
@@ -19,11 +19,38 @@ Your lucky number for today: 34
     <ul class="nav navbar-nav">
       <li><a href="http://www.keithstellyes.com/apps" style="color: white;">Web Apps</a></li>
       <li><a href="http://www.keithstellyes.com/projects" style="color: white;">Projects</a></li>
+    <li><a href="http://www.keithstellyes.com/tutorials/mips" style="color: white;">Tutorials</a></li>
       <li><a href="http://www.keithstellyes.com/contact" style="color: white;">Contact</a></li>
     </ul>
   </div>
 </nav>
     <div class="well well-lg" style="margin-top: 50px; margin-left: 15%; margin-right: 15%;">
-        I can be e-mailed at contact(at)keithstellyes(dot)com
+    <!--
+<form action="send_contact.html" method="post">
+  First name:<br>
+  <input type="text" name="name" value="Mickey"><br>
+  Last name:<br>
+  <input type="text" name="body" value="Mickey"><br>
+  Last name:<br>
+  <input type="text" name="email" value="Mouse"><br><br>
+  <input type="submit" value="Submit">
+</form>
+-->
+<form action="send_contact" method="post" role="form">
+  <div class="form-group">
+    <label for="email">Email address:</label>
+    <input type="email" class="form-control" id="email" name="email">
+  </div>
+  <div class="form-group">
+    <label for="name">Name:</label>
+    <input type="text" class="form-control" id="name" name="name">
+  </div>
+  <div class="form-group">
+    <label for="body">Message:</label>
+    <textarea class="form-control" rows="5" id="body" name="body"></textarea>
     </div>
+  <button type="submit" class="btn btn-default">Submit</button>
+</form>
+    </div>
+	</body>
 </html>
