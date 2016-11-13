@@ -68,12 +68,17 @@ Your lucky number for today: 74
 <li><a href="#wrap-up_3">Wrap-up</a></li>
 </ul>
 </li>
-<li><a href="#part-5-loop-n-times">Part 5: Loop N Times</a></li>
+<li><a href="#part-5-loop-n-times">Part 5: Loop N Times</a><ul>
+<li><a href="#walking-through-it_3">Walking through it</a></li>
+<li><a href="#source_4">Source</a></li>
+<li><a href="#wrap-up_4">Wrap-up</a></li>
+</ul>
+</li>
 <li><a href="#licensingrightscontact">Licensing/Rights/Contact</a></li>
 </ul>
 </div>
 <p><strong>Changelog</strong></p>
-<table>
+<table class="table table-bordered">
 <thead>
 <tr>
 <th>Date (PST)</th>
@@ -83,7 +88,7 @@ Your lucky number for today: 74
 <tbody>
 <tr>
 <td>2016-11-12</td>
-<td>Minor re-wording in Part 1 &amp; 4</td>
+<td>Part 5 added ;  Minor re-wording in Part 1 &amp; 4</td>
 </tr>
 </tbody>
 </table>
@@ -151,7 +156,9 @@ tutorial and have a bit more context.</p>
 <p>Let's get our very first Hello, World! program!</p>
 <p>Just this once, I'll throw the raw source code for you to appreciate.</p>
 <pre><code>.data
+
 hello:  .asciiz "Hello, World!\n"
+
 .text
     la $a0, hello
     li $v0, 4
@@ -167,7 +174,7 @@ part for our actual code, etc.   <code>.data</code> is for where we will pre-def
 different variables in memory.</p>
 <pre><code>.data
 </code></pre>
-<p>Now that we've marked where we're gonna store our data. Here, we declare a
+<p>Now that we've marked where we're gonna store our data. Here, we declare a 
 place in memory for a null-terminated string, <code>"Hello, World!\n"</code> the \n is
 the newline character. The <code>hello:</code> is a label for this place in memory.</p>
 <pre><code>hello:  .asciiz "Hello, World!\n"
@@ -183,7 +190,7 @@ takes its argument from. The instruction to do this is <code>la</code>. <code>la
 </code></pre>
 <p>So now that we have our string in the register, ready to be used as an argument
 for the print string service, we need to actually <em>specify</em> this service. A
-table with all the different services and their numbers can be found
+table with all the different services and their numbers can be found 
 <a href="http://courses.missouristate.edu/KenVollmar/mars/Help/SyscallHelp.html">here</a>.
 The specific service that is executed is determined by the value in the
 register <code>$v0</code>. The print string service is <code>4</code>. We have a specific
@@ -216,8 +223,11 @@ are good.</p>
 <h2 id="source">Source</h2>
 <p>Here's the source code with comments.</p>
 <pre><code>.data
+
 hello:  .asciiz "Hello, World!\n"
+
 .text
+
     la $a0, hello  #argument to print str
     li $v0, 4      #print syscall
     syscall        #make syscall
@@ -235,7 +245,7 @@ registers like <code>$a0</code>.</p>
 <h1 id="part-2-ab">PART 2: A+B</h1>
 <p>This will be a simple enough program. Get two integers, then print their sum.</p>
 <h2 id="walking-through-it">Walking through it.</h2>
-<p>First, we declare a spot in memory to store our integers, and for our
+<p>First, we declare a spot in memory to store our integers, and for our 
 strings to display when we want user input. <code>.word</code> refers to the amount of
 data we can address at a time, this is the size of a spot in memory like a
 register. This is a bit more of a complicated thing that I'm letting on, but
@@ -247,6 +257,7 @@ give us an integer.</p>
     b:.word 0
     givea: .asciiz "A:"
     giveb: .asciiz "B:"
+
 .text
     la $a0, givea #Load string
     li $v0, 4     #Set syscall to print string
@@ -260,7 +271,7 @@ syscall
 <p>Let's go ahead and store the result into memory. Generally speaking, while
 MARS MIPS implementation this isn't as necessary, registers can be a generally
 risky spot to store data long-term, as function calls don't necessarily make a
-guarantee to preserve them between calls, so for demonstration purposes, we
+guarantee to preserve them between calls, so for demonstration purposes, we 
 store it at the spot in memory we allocated, at <code>a</code>. We'll be using the
 instruction <code>sw</code> that stores the <code>word</code> in the first argument, which is a
 register, into the second argument, a place in memory.</p>
@@ -269,6 +280,7 @@ register, into the second argument, a place in memory.</p>
 <p>Let's do the same process, but for <code>b</code>...</p>
 <pre><code>la $a0, giveb
 li $v0, 4
+
 li $v0, 5
 syscall
 sw $v0, b
@@ -280,7 +292,7 @@ at <code>a</code> into <code>$a0</code>, the second loading the value at <code>b
 lw $a1, b
 </code></pre>
 <p>So, we have both of our integers (<em>words</em>) in our registers. If you remember,
-I said that we can only do math on the values currently in the registers.
+I said that we can only do math on the values currently in the registers. 
 The <code>add</code> instruction stores the results of the last 2 arguments,
 into the first. For <code>add x y z</code>, <code>x</code> will store the results of <code>y + z</code>.</p>
 <pre><code>add $a0, $a0, $a1
@@ -290,7 +302,7 @@ is syscall #1. It prints the current integer stored at <code>$a0</code> which we
 cleverly already stored the results in from the last operation. This is is
 where I find assembly programming to most enjoyable, slight little improvements
 in your code like that.</p>
-<pre><code>li $v0, 1
+<pre><code>li $v0, 1 
 syscall
 </code></pre>
 <p>And then, for the farewell, the good old system call saying we've had no
@@ -304,26 +316,34 @@ syscall
     b:.word 0
     givea: .asciiz "A:"
     giveb: .asciiz "B:"
+
 .text
     # Read integer a
     la $a0, givea #Load string
     li $v0, 4     #Set syscall to print string
     syscall
+
     li $v0, 5    #read integer service. Integer returned in $v0
     syscall
     sw $v0, a    #store our integer into the memory location a.
+
     # Read integer b
     la $a0, giveb
     li $v0, 4
+
     li $v0, 5   #read integer service.
     syscall
     sw $v0, b   #store our integer into the memory location b.
+
     lw $a0, a
     lw $a1, b
+
     add $a0, $a0, $a1 #arg0 = arg1+arg2
+
     li $v0, 1 #print integer service, it prints the integer stored at register $a0
     syscall
-    #exit
+
+    #exit   
     li $v0, 10
     syscall
 </code></pre>
@@ -389,12 +409,15 @@ syscall
     li $a0, 500   #allocate 400 bytes
     li $v0, 9     #set syscall to allocate memory
     syscall
-    la $a0,($v0) #set the target address for the read string
-    li $a1, 500   #set max number of chars to read
+
+    la $a0,($v0) #set the target address for the read string 
+    li $a1, 500   #set max number of chars to read 
     li $v0, 8     #set syscall to read string
     syscall
+
     li $v0,4     #set syscall to print string
     syscall
+
     li $v0,10    #exit cleanly with EXIT_SUCCESS
     syscall
 </code></pre>
@@ -430,6 +453,7 @@ last time.</p>
 <pre><code>la $a0, giveb
 li $v0, 4
 syscall
+
 li $v0, 5   #read integer service.
 syscall
 </code></pre>
@@ -482,27 +506,34 @@ in <code>$a0</code>, which we would've already dealt with loading.</p>
     giveb:  .asciiz "Integer B:"
     neqstr: .asciiz "Integers not equal.\n"
     eqstr:  .asciiz "Integers are equal.\n"
+
 .text
     # Read integer a
     la $a0, givea #Load string
     li $v0, 4     #Set syscall to print string
     syscall
+
     li $v0, 5    #read integer service. Integer returned in $v0
     syscall
     sw $v0, a    #store our integer into the memory location a.
+
     # Read integer b
     la $a0, giveb
     li $v0, 4
     syscall
+
     li $v0, 5   #read integer service.
     syscall
+
     lw $a0, a
     beq $a0, $v0, equals # if not equals, then it just goes to next line.
+
     la $a0, neqstr #If we get here, then A != B
     j printandexit #without this jump, we would also execute the equals procedure
 equals: #Sets the string-to-print as the output for A==B
     la $a0, eqstr
     j printandexit #We could delete this and "fall through"
+
 printandexit: # Prints whatever is in $a0 then exits.
     li $v0, 4
     syscall
@@ -516,7 +547,129 @@ have true procedures, those that can have recursion, but here it's not
 necessary. Forgetting jump or branch instructions before your sections can lead
 to code blocks you don't want executing. Be careful.</p>
 <h1 id="part-5-loop-n-times">Part 5: Loop N Times</h1>
-<p>(not yet written sorry)</p>
+<p>This time, we will write a simple program, that when given an integer, it will
+print that many times, each time doing a "countdown". We can easily combine
+the conditional branching we used in Part 4 here, but with a bit of modification.</p>
+<h2 id="walking-through-it_3">Walking through it</h2>
+<p>Our <code>.data</code> this time isn't going to be super interesting. Let's just have 3
+different strings: One for when we ask for input, one to say that we're done,
+and one that is just a newline character. This is desirable because the service
+to print an integer does not automatically append a newline.</p>
+<pre><code>.data
+    newline: .asciiz "\n"
+    inputstr: .asciiz "How many times to loop?\n"
+    donestr: .asciiz "No more times to loop :'(\n"
+</code></pre>
+<p>Let's ask for an integer, and store it. We've done this a lot already.</p>
+<pre><code>.text 
+    la $a0, inputstr #Load string
+    li $v0, 4     #Set syscall to print string
+    syscall
+
+    li $v0, 5    #read integer service. Integer returned in $v0
+    syscall
+</code></pre>
+<p>Here's where we diverge. Both the print string and print integer services take
+their argument in <code>$a0</code>, so we will have to find a safe place for our
+integer. This time, we'll just store it in a register that won't get modified.
+This specific implementation and set-up we can treat a register as a safe place
+for holding data, but in many architectures and systems, calling a system
+service or C function makes no guarantees about preserving your registers. So
+don't make that mistake like I did when you go to other assembly architectures.
+We will use the <code>$v1</code> register, if for no reason other than to be arbitrary.
+Again, holding data in registers between system calls is discouraged at best,
+and simply won't work or break things at worst. But here, it'll let us focus
+on other core assembly concepts. We will use the <code>move</code> instruction to do
+this.</p>
+<pre><code>move $v1, $v0
+</code></pre>
+<p>So now, let's begin the loop. Since we know we need a conditional at the start
+and to jump back, we will need a label and our conditional. We will call our
+post-loop code, <code>alldone</code>. The condition will branch when our integer hits 0.</p>
+<pre><code>loop:   
+    beqz $v1, alldone
+</code></pre>
+<p>Okay, now that we have implemented our condition, let's print our integer. The
+print integer service is 1, and takes the argument in <code>$a0</code>. It does not
+do a newline after, which is important to remember if we want clean output. We
+will have to set the system call, copy from our <code>$v1</code> register storing our
+counter, to the <code>$a0</code> to be used as an argument. We use the <code>move</code>
+instruction for this. Finally, we make our syscall.</p>
+<pre><code>li $v0, 1
+move $a0, $v1
+syscall
+</code></pre>
+<p>As previously stated, we still have to print our newline to ensure clean
+output, so let's do that. We're just printing it as a string, nothing special.</p>
+<pre><code>la $a0, newline
+li $v0, 4
+syscall
+</code></pre>
+<p>Now that we've printed our counter, let's decrement it. Many architectures
+(such as x86-64, found in most personal computers) have a <code>dec</code> instruction
+for just this, lowering it by 1. Here, we do not, we must subtract it by 1.</p>
+<pre><code>subi $v1, $v1, 1
+</code></pre>
+<p>And then, we jump back to the beginning of the loop.</p>
+<pre><code>j loop
+</code></pre>
+<p>Now that our loop is finished, we can write the final <code>alldone</code> segment.
+This is just printing the <code>donestr</code> string and exiting. Very boilerplate.
+We'll also need to set it to the <code>alldone</code> label.</p>
+<pre><code>alldone:
+    la $a0, donestr
+    li $v0, 4
+    syscall
+    li $v0, 10
+    syscall
+</code></pre>
+<h2 id="source_4">Source</h2>
+<p>Note that I've done a bit of additional indentation for readability.</p>
+<pre><code>.data
+    newline: .asciiz "\n"
+    inputstr: .asciiz "How many times to loop?\n"
+    donestr: .asciiz "No more times to loop :'(\n"
+
+.text 
+    la $a0, inputstr #Load string
+    li $v0, 4     #Set syscall to print string
+    syscall
+
+    li $v0, 5    #read integer service. Integer returned in $v0
+    syscall
+
+    move $v1, $v0
+
+loop:   
+    # If $v1 == 0: goto alldone
+    beqz $v1, alldone
+        #inside loop...
+        #print our counter
+        li $v0, 1
+        move $a0, $v1
+        syscall
+
+        #break to next line
+        la $a0, newline
+        li $v0, 4
+        syscall
+
+        #decrement counter and go back to start of loop.
+        subi $v1, $v1, 1
+    j loop
+
+alldone:
+    #print concluding string, and exit.
+    la $a0, donestr
+    li $v0, 4
+    syscall
+    li $v0, 10
+    syscall
+</code></pre>
+<h2 id="wrap-up_4">Wrap-up</h2>
+<p>Using a branch and an unconditional jump at both the beginning and end of a
+segment of code, we can implement looping structures as we see in normal
+programming languages.</p>
 <h1 id="licensingrightscontact">Licensing/Rights/Contact</h1>
 <p>For questions, comments, corrections, inquiries, etc. I may be reached at
 contact@keithstellyes.com</p>
