@@ -1,4 +1,5 @@
-I am currently a student at University of Washington - Tacoma campus.
+I am currently a student and teaching assistant at University of Washington - 
+Tacoma campus.
 
 My interests in programming, while varied, tend to focus on low-level code and
 thinking. This has led me to really enjoy writing in C/C++ and assembly. 
