@@ -6,8 +6,10 @@ import markdown.extensions.tables
 import datetime
 import random
 #Yeah, it's hard-coded. Sorry, I guess.
+# TODO: compute this at run-time, certainly make my own life easier ...
 #data_dir = '/home/keith/Code/Python/keithstellyesdotcom/data/'
-data_dir = '/home/keith/git/keithstellyesdotcom/data/'
+#data_dir = '/home/keith/git/keithstellyesdotcom/data/'
+data_dir = '/home/keith/code/git/keithstellyesdotcom/data/'
 md_extensions = ['markdown.extensions.tables']
 #A major catch-all function that is useful for simple writing of files.
 #If it's a markdown file, compile it to HTML then return that raw HTML

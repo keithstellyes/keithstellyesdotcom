@@ -80,4 +80,5 @@ py_code = open(py_file_to_insert,'r').read()
 
 for f in os.listdir(page_dir):
     if f[0] == '_' and os.path.isfile(page_dir + f):
+        print('compiling: ' + page_dir + f)
         compile_tmplt(page_dir + f, page_dir + f[1:],py_code)
