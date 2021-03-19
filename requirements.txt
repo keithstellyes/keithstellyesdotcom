@@ -1,6 +1,6 @@
 Flask==0.11.1
 Genshi==0.7
-Jinja2==2.8
+Jinja2==2.11.3
 Mako==1.0.0
 Markdown==2.6.6
 MarkupSafe==0.23
