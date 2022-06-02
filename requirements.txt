@@ -10,7 +10,7 @@ chardet==2.3.0
 click==6.6
 colorama==0.3.2
 decorator==3.4.0
-html5lib==0.999
+html5lib==0.99999999
 itsdangerous==0.24
 psycopg2==2.6.2
 pytz==2016.6.1
